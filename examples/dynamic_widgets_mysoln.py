@@ -11,8 +11,6 @@ class DynamicWidgetsApp(App):
     def __init__(self, **kwargs):
             """Construct main app."""
             super().__init__(**kwargs)
-            # basic data example - dictionary of names: phone numbers
-            # TODO: After running it, add another entry to the dictionary and see how the layout changes
             self.dictionary = {}
 
     def build(self):
