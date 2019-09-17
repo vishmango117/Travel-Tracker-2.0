@@ -10,17 +10,6 @@ class PlaceCollection():
         self.unvisited_counter = 0
 
     def save_places(self, filename):
-        """ write_file(): FUNCTION TO WRITE TO CSV FILE
-        WRITING IS DONE WHEN PROGRAM IS QUITTED OR ERR(KEYBOARD INTERRUPT)
-        PARAMS: DICTIONARY(DICT), SIZE(INT), FILENAME(STRING)
-        RETURN VALUE: NO VALUES ARE RETURNED"""
-
-        # START OF FUNCTION
-        fp = open(filename, 'w+')
-        for i in range(0, self.size):
-            print("{},{},{}".format(self.collection[i].name, self.collection[i].year, self.collection[i].cost, file=fp))
-        print("{} places saved to {}".format(self.size, filename))
-        fp.close()
 
     def load_places(self, filename):
         """ load_places(): FUNCTION DESIGNED TO READ CSV FILES

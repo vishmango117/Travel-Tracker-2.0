@@ -3,12 +3,11 @@ from kivy.lang import Builder
 from kivy.app import StringProperty
 from kivy.clock import Clock
 from kivy.uix.button import Button
+from PlaceCollection import PlaceCollection
 
 MI_TO_KM = 1.60934
 
 class MVCDemo(App):
-    message = StringProperty()
-
 
 
     def build(self):
@@ -25,12 +24,12 @@ class MVCDemo(App):
             return False
         else:
             name = self.root.ids.name_input.text
-        if(self.handle_string_validation(self.root.ids.name_input.text)):
+        if(self.handle_string_validation(self.root.ids.country_input.text)):
             self.handle_clear_country()
             return False
         else:
             country = self.root.ids.name_input.text
-        if(self.handle_string_validation(self.root.ids.name_input.text)):
+        if(self.handle_string_validation(self.root.ids.priority_input.text)):
             self.handle_clear_priority()
             return False
         else:
@@ -44,8 +43,8 @@ class MVCDemo(App):
         """Create buttons from dictionary entries and add them to the GUI."""
         # create a button for each data entry, specifying the text and id
         # (although text and id are the same in this case, you should see how this works)
-        temp_button = Button(text="{} in {}, priority {}".format(name, country, priority), id=name)
-        temp_button.bind(on_release=self.press_entry)
+        temp_button = Button(text="{} in {}, priority {}".format(name, country, priority), id="place_dictionary")
+        temp_button.bind()
         # add the button to the "entries_box" layout widget
         self.root.ids.dictionary_display.add_widget(temp_button)
 
@@ -89,8 +88,7 @@ class MVCDemo(App):
     
     def handle_clear_name(self):
         self.root.ids.place_input.text = ""
-
-
         
 
 # create and start the App running
+

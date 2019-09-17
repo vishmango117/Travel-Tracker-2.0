@@ -1,4 +1,4 @@
-class Places:
+class Place:
     def __init__(self, name, country, priority, visited='n'):
         self.name = name
         self.country = country

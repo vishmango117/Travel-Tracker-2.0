@@ -1,0 +1,58 @@
+BoxLayout:
+    orientation: 'horizontal'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.4
+        Label:
+            text: 'Sort By:'
+        Spinner:
+            id: sort_selection
+            text: "<Select>"
+            values: ["Visited", "Country", "City"]
+            on_text: app.handle_sort_option(sort_selection.text)
+
+        Label:
+            text:'Place'
+        TextInput:
+            text: ''
+            id: place_input
+            multiline: False
+        Label:
+            text:'Country'
+        TextInput:
+            text: ''
+            id: country_input
+            multiline: False
+        Label:
+            text:'Priority'
+        TextInput:
+            text: ''
+            id: priority_input
+            multiline: False
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                id: submission
+                text: 'Submit'
+                on_press: app.build_object(place_input.text, country_input.text, priority_input.text)
+            Button:
+                id: clear
+                text: 'Clear'
+                on_press: app.build_object
+    #Button:
+        #id: convert_button
+        #text: 'Convert m to km'
+        #on_press: app.handle_conversion(int(user_input.text))
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint_y: 0.1
+            id: unvisisted_counter
+            text:'Hello'
+        BoxLayout:
+            orientation: 'vertical'
+            id: entries_box
+        Label:
+            size_hint_y: 0.1
+            id: diagonstic_message
+            text: 'This is a Diagnostic Message'
