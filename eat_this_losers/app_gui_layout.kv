@@ -10,35 +10,34 @@ BoxLayout:
             text: "<Select>"
             values: ["Visited", "Country", "City"]
             on_text: app.handle_sort_option(sort_selection.text)
-
         Label:
-            text:'Place'
+            text: 'Add New Place...'
+        Label:
+            text:'Name:'
         TextInput:
             text: ''
             id: place_input
             multiline: False
         Label:
-            text:'Country'
+            text:'Country:'
         TextInput:
             text: ''
             id: country_input
             multiline: False
         Label:
-            text:'Priority'
+            text:'Priority:'
         TextInput:
             text: ''
             id: priority_input
             multiline: False
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                id: submission
-                text: 'Submit'
-                on_press: app.build_object(place_input.text, country_input.text, priority_input.text)
-            Button:
-                id: clear
-                text: 'Clear'
-                on_press: app.build_object
+        Button:
+            id: submission
+            text: 'Submit'
+            on_press: app.handle_submission()
+        Button:
+            id: clear
+            text: 'Clear'
+            on_press: app.clear_all_entries()
     #Button:
         #id: convert_button
         #text: 'Convert m to km'
@@ -55,4 +54,4 @@ BoxLayout:
         Label:
             size_hint_y: 0.1
             id: diagonstic_message
-            text: 'This is a Diagnostic Message'
+            text: ''

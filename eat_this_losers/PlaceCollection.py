@@ -31,10 +31,10 @@ class PlaceCollection():
             self.size+=1
         file_read.close()
 
-    def add_place(self, filename):
-        (name, country, priority)=("Testing","Test123",12)
+    def add_place(self, name, country, priority):
         place_obj = Place(name, country, priority)
         self.collection.append(place_obj)
+        self.size +=1
 
     def save_places(self, filename):
         """ write_file(): FUNCTION TO WRITE TO CSV FILE
@@ -44,9 +44,8 @@ class PlaceCollection():
 
         # START OF FUNCTION
         fp = open(filename, 'w+')
-        for i in range(0, self.size):
-            print("{},{},{}".format(self.collection[i].name, self.collection[i].year, self.collection[i].cost, file=fp))
-        print("{} places saved to {}".format(self.size, filename))
+        for i in range(self.size):
+            fp.write("{},{},{},{}\n".format(self.collection[i].name, self.collection[i].country, self.collection[i].priority,self.collection[i].visited))
         fp.close()
 
     def get_unvisited(self):
