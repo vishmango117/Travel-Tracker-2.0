@@ -28,6 +28,8 @@ class PlaceCollection():
             #print(data[0], data[1], data[2])
             self.collection.append(Place(data[0],data[1],data[2], data[3]))
             self.collection[self.size].priority = int(self.collection[self.size].priority)
+            if(self.collection[self.size].visited == 'n'):
+                self.unvisited_counter +=1
             self.size+=1
         file_read.close()
 
@@ -35,6 +37,7 @@ class PlaceCollection():
         place_obj = Place(name, country, priority)
         self.collection.append(place_obj)
         self.size +=1
+        self.unvisited_counter+=1
 
     def save_places(self, filename):
         """ write_file(): FUNCTION TO WRITE TO CSV FILE

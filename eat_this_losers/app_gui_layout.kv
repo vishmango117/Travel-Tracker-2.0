@@ -46,12 +46,12 @@ BoxLayout:
         orientation: 'vertical'
         Label:
             size_hint_y: 0.1
-            id: unvisisted_counter
-            text:'Hello'
+            id: unvisisted_display
+            text: app.status_text1
         BoxLayout:
             orientation: 'vertical'
             id: entries_box
         Label:
             size_hint_y: 0.1
             id: diagonstic_message
-            text: ''
+            text: app.status_text2
