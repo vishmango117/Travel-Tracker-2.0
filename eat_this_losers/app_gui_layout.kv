@@ -9,7 +9,7 @@ BoxLayout:
             id: sort_selection
             text: "<Select>"
             values: ["Visited", "Country", "City"]
-            on_press: app.handle_sort_option(sort_selection.text)
+            on_text: app.handle_sort_option(sort_selection.text)
         Label:
             text: 'Add New Place...'
         Label:

@@ -9,6 +9,7 @@ from operator import attrgetter
 
 # Importing Classes
 from PlaceCollection import PlaceCollection
+from Places import Place
 
 
 class TravelTrackerApp(App):
@@ -63,24 +64,35 @@ class TravelTrackerApp(App):
 
     def handle_sort_option(self, option):
         if(option == "Visited"):
-            sorted(self.travel_tracker.collection, key=attrgetter('visited'))
+            self.travel_tracker.collection.sort(key=attrgetter("visited", "priority"))
+            self.root.ids.entries_box.clear_widgets()
+            for i in range(self.travel_tracker.size):
+                self.create_widgets(self.travel_tracker.collection[i])
         elif(option == "Country"):
-            sorted(self.travel_tracker.collection, key=attrgetter('country'))
+            self.travel_tracker.collection.sort(key=attrgetter("country", "priority"))
+            self.root.ids.entries_box.clear_widgets()
+            for i in range(self.travel_tracker.size):
+                self.create_widgets(self.travel_tracker.collection[i])
         elif(option == "City"):
-            sorted(self.travel_tracker.collection, key=attrgetter('name'))
+            self.travel_tracker.collection.sort(key=attrgetter("name", "priority"))
+            self.root.ids.entries_box.clear_widgets()
+            for i in range(self.travel_tracker.size):
+                self.create_widgets(self.travel_tracker.collection[i])
         else:
-            sorted(self.travel_tracker.collection, key=attrgetter('name'))
+            self.travel_tracker.collection.sort(key=attrgetter("name", "priority"))
+            self.root.ids.entries_box.clear_widgets()
+            for i in range(self.travel_tracker.size):
+                self.create_widgets(self.travel_tracker.collection[i])
 
 
     def handle_submission(self):
-        if(self.handle_string_validation(self.root.ids.name_input.text)):
-            name = self.root.ids.name_input.text
-        elif(self.handle_string_validation(self.root.ids.country_input.text)):
-            country = self.root.ids.country_input.text
-        elif(self.handle_int_validation(int(self.root.ids.priority_input.text))):
-            priority = int(self.root.ids.priority_input.text)
-        else:
-            self.clear_all_entries()
+        name = self.root.ids.place_input.text
+        country = self.root.ids.country_input.text
+        priority = int(self.root.ids.priority_input.text)
+        self.create_widgets(Place(name, country, priority))
+        self.travel_tracker.add_place(name, country, priority)
+        self.unvisited_display = self.send_unvisited()
+        self.clear_all_entries()
         
 
 

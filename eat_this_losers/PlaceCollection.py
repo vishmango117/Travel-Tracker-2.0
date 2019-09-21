@@ -1,6 +1,6 @@
 import csv
 from Places import Place
-
+from operator import attrgetter
 
 class PlaceCollection():
     
@@ -28,7 +28,6 @@ class PlaceCollection():
         file_row = csv.reader(file_read, delimiter=',')
         
         for data in file_row:
-            #print(data[0], data[1], data[2])
             self.collection.append(Place(data[0],data[1],data[2], data[3]))
             self.collection[self.size].priority = int(self.collection[self.size].priority)
             if(self.collection[self.size].visited == 'n'):
@@ -51,7 +50,10 @@ class PlaceCollection():
         # START OF FUNCTION
         fp = open(filename, 'w+')
         for i in range(self.size):
-            fp.write("{},{},{},{}\n".format(self.collection[i].name, self.collection[i].country, self.collection[i].priority,self.collection[i].visited))
+            fp.write("{},{},{},{}\n".format(self.collection[i].name,
+            self.collection[i].country,
+            self.collection[i].priority,
+            self.collection[i].visited))
         fp.close()
 
     def get_unvisited(self):
