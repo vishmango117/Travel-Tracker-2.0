@@ -7,9 +7,9 @@ class Place:
     
     def __str__(self):
         if(self.visited == 'n'):
-            return "Name: {} Country: {} Priority: {}".format(self.name, self.country, self.priority)
+            return "{} in {}, priority {}".format(self.name, self.country, self.priority)
         elif(self.visited == 'v'):
-            return "Name: {} Country: {} Priority: {} (visited)".format(self.name, self.country, self.priority)
+            return "{} in {}, priority {} (visited)".format(self.name, self.country, self.priority)
     
     def mark_visited(self):
         self.visited = 'v'
