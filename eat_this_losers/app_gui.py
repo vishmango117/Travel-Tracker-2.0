@@ -8,8 +8,8 @@ from PlaceCollection import PlaceCollection
 
 class DynamicWidgetsApp(App):
     """Main program - Kivy app to demo dynamic widget creation."""
-    status_text1 = StringProperty()
-    status_text2 = StringProperty()
+    unvisited_display = StringProperty()
+    program_message = StringProperty()
 
     
     def __init__(self):
@@ -21,8 +21,8 @@ class DynamicWidgetsApp(App):
         self.travel_tracker.load_places("places.csv")
         for i in range(self.travel_tracker.size):
             self.create_widgets(self.travel_tracker.collection[i].name, self.travel_tracker.collection[i].country, self.travel_tracker.collection[i].priority)
-        self.status_text1 = self.send_unvisited()
-        self.status_text2 = "Welcome to Travel Tracker 2.0 Vishal"
+        self.unvisited_message = self.send_unvisited()
+        self.program_message = "Welcome to Travel Tracker 2.0 Vishal"
         #self.send_unvisited()
 
     def on_stop(self):
@@ -47,24 +47,37 @@ class DynamicWidgetsApp(App):
         name = self.root.ids.place_input.text
         country = self.root.ids.country_input.text
         priority = int(self.root.ids.priority_input.text)
-        self.create_widgets(name, country, priority)
-        self.travel_tracker.add_place(name, country, priority)
-        self.clear_all_entries()
-        self.travel_tracker.unvisited_counter +=1
-        self.status_text1 = self.send_unvisited()
-        #if(self.handle_string_validation(name) == False):
-        #    self.handle_clear_place()
+        if(self.handle_string_validation(name) and self.handle_string_validation(country) and self.handle_int_validation(priority)):            
+            self.create_widgets(name, country, priority)
+            self.travel_tracker.add_place(name, country, priority)
+            self.clear_all_entries()
+            self.travel_tracker.unvisited_counter +=1
+            self.unvisited_message = self.send_unvisited()
+            self.program_message = "                                               "
+            self.program_message = "{} in {}, priority {} added".format(name, country, priority)
+        else:
+            self.clear_all_entries()
         
 
 
     def handle_string_validation(self, value):
         if(value == ''):
-            self.root.ids.diagnostic_message.text = "Input cannot be blank"
+            self.program_message = "Input cannot be blank"
             return False
         elif(not(value.isalpha())):
-            self.root.ids.diagnostic_message.text = "Invalid Name Try Again"
+            self.program_message = "Invalid Name Try Again"
             return False
         return True
+    def handle_int_validation(self, value):
+        try:
+            if(value <= 0):
+                print("Number must be > 0")
+                return False
+            else:
+                return True
+        except ValueError:
+            print("Invalid input; enter a valid number")
+            return False
 
     def handle_clear_place(self):
         self.root.ids.place_input.text = ""

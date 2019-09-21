@@ -3,10 +3,13 @@ from Places import Place
 
 
 class PlaceCollection():
+    
     def __init__(self):
         self.collection = list()
         self.size = 0
         self.unvisited_counter = 0
+    
+    
     
     def load_places(self, filename):
         """ load_places(): FUNCTION DESIGNED TO READ CSV FILES
