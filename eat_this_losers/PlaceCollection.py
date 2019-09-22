@@ -58,7 +58,6 @@ class PlaceCollection():
 
     def get_unvisited(self):
         return self.unvisited_counter
-    
-    #def sort_function(self):
+
 
 

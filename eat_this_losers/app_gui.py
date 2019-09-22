@@ -18,10 +18,10 @@ class TravelTrackerApp(App):
     program_message = StringProperty()
 
     
-    def __init__(self):
+    def __init__(self, my_placecollection_obj):
         """Construct main app."""
         super().__init__()
-        self.travel_tracker = PlaceCollection()
+        self.travel_tracker = my_placecollection_obj
 
     def on_start(self):
         self.travel_tracker.load_places("places.csv")
@@ -44,7 +44,12 @@ class TravelTrackerApp(App):
         """Create buttons from dictionary entries and add them to the GUI."""
         # create a button for each data entry, specifying the text and id
         # (although text and id are the same in this case, you should see how this works)
-        temp_button = Button(text=placeobj.__str__(), id=placeobj.name)
+        if(placeobj.visited == "v"):
+            temp_button = Button(text=placeobj.__str__(), id=placeobj.name,
+            background_normal = '', background_color= [0,0,0,0])
+        else:
+            temp_button = Button(text=placeobj.__str__(), id=placeobj.name,
+            background_normal = '', background_color= [0.027, 0.212, 0.259, 1])
         temp_button.bind(on_press = self.handle_visit)
         # add the button to the "entries_box" layout widget
         self.root.ids.entries_box.add_widget(temp_button)
@@ -56,9 +61,19 @@ class TravelTrackerApp(App):
                 if(self.travel_tracker.collection[i].visited == "n"):
                     self.travel_tracker.collection[i].mark_visited()
                     self.travel_tracker.unvisited_counter -= 1
+
+                    if(self.travel_tracker.collection[i].important_place()):
+                        self.program_message = "You visited {}. Great Travelling".format(button_name)
+                    else:
+                        self.program_message = "You visited {}".format(button_name)
                 else:
                     self.travel_tracker.collection[i].mark_unvisited()
                     self.travel_tracker.unvisited_counter += 1
+                    if(self.travel_tracker.collection[i].important_place()):
+                        self.program_message = "You need to visit {} Get Going!".format(button_name)
+                    else:
+                        self.program_message = "You need to visit {}".format(button_name)
+
                 instance.text = self.travel_tracker.collection[i].__str__()
         self.unvisited_display = self.send_unvisited()
 
@@ -86,13 +101,16 @@ class TravelTrackerApp(App):
 
 
     def handle_submission(self):
-        name = self.root.ids.place_input.text
-        country = self.root.ids.country_input.text
-        priority = int(self.root.ids.priority_input.text)
-        self.create_widgets(Place(name, country, priority))
-        self.travel_tracker.add_place(name, country, priority)
-        self.unvisited_display = self.send_unvisited()
-        self.clear_all_entries()
+        if(self.handle_string_validation(self.root.ids.place_input.text, "Place") and
+           self.handle_string_validation(self.root.ids.country_input.text, "Country") and
+           self.handle_int_validation(self.root.ids.priority_input.text, "Priority")):
+            name = self.root.ids.place_input.text
+            country = self.root.ids.country_input.text
+            priority = int(self.root.ids.priority_input.text)
+            self.create_widgets(Place(name, country, priority))
+            self.travel_tracker.add_place(name, country, priority)
+            self.unvisited_display = self.send_unvisited()
+            self.clear_all_entries()
         
 
 
@@ -109,11 +127,13 @@ class TravelTrackerApp(App):
         try:
             if(value == ''):
                 self.program_message = "All fields must be completed"
-            if(value <= 0):
-                self.program_message = "{} must be > 0".format(variable_name)
-                return False
             else:
-                return True
+                value = int(value)
+                if(value <= 0):
+                    self.program_message = "{} must be > 0".format(variable_name)
+                    return False
+                else:
+                    return True
         except ValueError:
             self.program_message = "Please enter a valid number"
             return False
