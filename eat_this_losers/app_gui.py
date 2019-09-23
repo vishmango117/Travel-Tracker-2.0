@@ -76,6 +76,10 @@ class TravelTrackerApp(App):
 
                 instance.text = self.travel_tracker.collection[i].__str__()
         self.unvisited_display = self.send_unvisited()
+        self.travel_tracker.collection.sort(key=attrgetter("visited", "priority"))
+        self.root.ids.entries_box.clear_widgets()
+        for i in range(self.travel_tracker.size):
+            self.create_widgets(self.travel_tracker.collection[i])
 
     def handle_sort_option(self, option):
         if(option == "Visited"):
@@ -94,7 +98,7 @@ class TravelTrackerApp(App):
             for i in range(self.travel_tracker.size):
                 self.create_widgets(self.travel_tracker.collection[i])
         else:
-            self.travel_tracker.collection.sort(key=attrgetter("name", "priority"))
+            self.travel_tracker.collection.sort(key=attrgetter("visited", "priority"))
             self.root.ids.entries_box.clear_widgets()
             for i in range(self.travel_tracker.size):
                 self.create_widgets(self.travel_tracker.collection[i])
