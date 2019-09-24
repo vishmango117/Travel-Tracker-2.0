@@ -101,24 +101,25 @@ class TravelTrackerApp(App):
 
     def handle_sort_option(self, option):
 
+        #Set sorting based on the option set by the spinner in the kv
 
+        # Option is Visited
         if(option == "Visited"):
             self.travel_tracker.collection.sort(key=attrgetter("visited", "priority"))
             self.root.ids.entries_box.clear_widgets()
             for i in range(self.travel_tracker.size):
                 self.create_widgets(self.travel_tracker.collection[i])
+
+        # Option is Country
         elif(option == "Country"):
             self.travel_tracker.collection.sort(key=attrgetter("country", "priority"))
             self.root.ids.entries_box.clear_widgets()
             for i in range(self.travel_tracker.size):
                 self.create_widgets(self.travel_tracker.collection[i])
+            
+        # Option is City
         elif(option == "City"):
             self.travel_tracker.collection.sort(key=attrgetter("name", "priority"))
-            self.root.ids.entries_box.clear_widgets()
-            for i in range(self.travel_tracker.size):
-                self.create_widgets(self.travel_tracker.collection[i])
-        else:
-            self.travel_tracker.collection.sort(key=attrgetter("visited", "priority"))
             self.root.ids.entries_box.clear_widgets()
             for i in range(self.travel_tracker.size):
                 self.create_widgets(self.travel_tracker.collection[i])
@@ -130,7 +131,8 @@ class TravelTrackerApp(App):
         and based on input it will either print the appropriate error message
         or it will add the place to the list
         alongside with create the widget for the new place."""
-        name = self.self.root.ids.place_input.text
+
+        name = self.root.ids.place_input.text
         country = self.root.ids.country_input.text
         priority = self.root.ids.priority_input.text
         if(self.handle_string_validation(name, "Place") and
@@ -141,6 +143,7 @@ class TravelTrackerApp(App):
             self.travel_tracker.add_place(name, country, priority)
             self.unvisited_display = self.send_unvisited()
             self.clear_all_entries()
+            self.program_message = "{} in {} (priority {}) added to Travel Tracker".format(name, country, priority)
         
 
 
@@ -159,6 +162,7 @@ class TravelTrackerApp(App):
     def handle_int_validation(self, value, variable_name):
         """handle_int_validation(): Method to handle inputs of integer types
         checks whether data type is a blank value or a valid positive value."""
+
         try:
             if(value == ''):
                 self.program_message = "All fields must be completed"
@@ -176,9 +180,11 @@ class TravelTrackerApp(App):
     def clear_all_entries(self):
         """Clear_all_entries(): Method to clear entries on button press Clear
            name_input, country_input, priority_input and status bar."""
+        # Clear all inputs
         self.root.ids.place_input.text = ""
         self.root.ids.country_input.text = ""
         self.root.ids.priority_input.text = ""
+        # Clear Status Bar
         self.program_message = ""
     
     def send_unvisited(self):
