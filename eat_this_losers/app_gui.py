@@ -19,11 +19,17 @@ class TravelTrackerApp(App):
 
     
     def __init__(self, my_placecollection_obj):
-        """Construct main app."""
+        """__init__() : Method that loads the TravelTrackerApp on load
+        calls the super classes __init__  function and sets the object."""
         super().__init__()
         self.travel_tracker = my_placecollection_obj
 
     def on_start(self):
+        """on_start(): Method that is called before the application is running
+        and is called right after the build method. In this case we
+        from the file
+        and send the unvisited display and program status message."""
+
         self.travel_tracker.load_places("places.csv")
         for i in range(self.travel_tracker.size):
             self.create_widgets(self.travel_tracker.collection[i])
@@ -31,14 +37,20 @@ class TravelTrackerApp(App):
         self.program_message = "Welcome to Travel Tracker 2.0 Vishal"
 
     def on_stop(self):
+        """on_stop(): Method that is executed before terminating the window.
+        In this case we the override the method to save the places
+        when the program is exited."""
+
         self.travel_tracker.save_places("places.csv")
         print("Program Terminated")
 
     def build(self):
-            """Build the Kivy GUI."""
-            self.title = "Dynamic Widgets"
-            self.root = Builder.load_file('app_gui_layout.kv')
-            return self.root
+        """Build(): Method to build the Kivy GUI.
+        Invokes the on_start() function before loading the Window"""
+
+        self.title = "Dynamic Widgets"
+        self.root = Builder.load_file('app_gui_layout.kv')
+        return self.root
 
     def create_widgets(self, placeobj):
         """Create buttons from dictionary entries and add them to the GUI."""
@@ -55,6 +67,12 @@ class TravelTrackerApp(App):
         self.root.ids.entries_box.add_widget(temp_button)
 
     def handle_visit(self, instance):
+        """handle_visit(): Handles on what to do if button on the place is pressed
+        in this case it will check whether update the dictionary
+        is either to be visited or unvisited by which
+        it will sort based on the new value
+        and update the GUI based on the new values"""
+
         button_name = instance.id
         for i in range (self.travel_tracker.size):
             if(self.travel_tracker.collection[i].name == button_name):
@@ -82,6 +100,8 @@ class TravelTrackerApp(App):
             self.create_widgets(self.travel_tracker.collection[i])
 
     def handle_sort_option(self, option):
+
+
         if(option == "Visited"):
             self.travel_tracker.collection.sort(key=attrgetter("visited", "priority"))
             self.root.ids.entries_box.clear_widgets()
@@ -105,11 +125,17 @@ class TravelTrackerApp(App):
 
 
     def handle_submission(self):
-        if(self.handle_string_validation(self.root.ids.place_input.text, "Place") and
-           self.handle_string_validation(self.root.ids.country_input.text, "Country") and
-           self.handle_int_validation(self.root.ids.priority_input.text, "Priority")):
-            name = self.root.ids.place_input.text
-            country = self.root.ids.country_input.text
+        """handle_submission(): Method to execute when the Add Place button is pressed
+        It will do the error checks on inputs of name, country, priority
+        and based on input it will either print the appropriate error message
+        or it will add the place to the list
+        alongside with create the widget for the new place."""
+        name = self.self.root.ids.place_input.text
+        country = self.root.ids.country_input.text
+        priority = self.root.ids.priority_input.text
+        if(self.handle_string_validation(name, "Place") and
+           self.handle_string_validation(country, "Country") and
+           self.handle_int_validation(priority, "Priority")):
             priority = int(self.root.ids.priority_input.text)
             self.create_widgets(Place(name, country, priority))
             self.travel_tracker.add_place(name, country, priority)
@@ -119,6 +145,9 @@ class TravelTrackerApp(App):
 
 
     def handle_string_validation(self, value, variable_name):
+        """handle_string_validation(): Method to handle inputs of string types
+        checks for blank strings and if characters are alphabetic"""
+
         if(value == ''):
             self.program_message = "All fields must be completed"
             return False
@@ -128,6 +157,8 @@ class TravelTrackerApp(App):
         return True
     
     def handle_int_validation(self, value, variable_name):
+        """handle_int_validation(): Method to handle inputs of integer types
+        checks whether data type is a blank value or a valid positive value."""
         try:
             if(value == ''):
                 self.program_message = "All fields must be completed"
@@ -141,20 +172,13 @@ class TravelTrackerApp(App):
         except ValueError:
             self.program_message = "Please enter a valid number"
             return False
-
-    def handle_clear_place(self):
-        self.root.ids.place_input.text = ""
-    def handle_clear_country(self):
-        self.root.ids.country_input.text = ""
-    def handle_clear_priority(self):
-        self.root.ids.priority_input.text = ""
-
     
     def clear_all_entries(self):
-        """Clear all of the widgets that are children of the "entries_box" layout widget."""
-        self.handle_clear_place()
-        self.handle_clear_country()
-        self.handle_clear_priority()
+        """Clear_all_entries(): Method to clear entries on button press Clear
+           name_input, country_input, priority_input and status bar."""
+        self.root.ids.place_input.text = ""
+        self.root.ids.country_input.text = ""
+        self.root.ids.priority_input.text = ""
         self.program_message = ""
     
     def send_unvisited(self):
