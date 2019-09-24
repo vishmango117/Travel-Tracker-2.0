@@ -1,33 +1,87 @@
-# CP1404 Assignment 2: Travel Tracker 2.0 by YOURNAME
+# Project Title
 
-_Edit this README, replacing this line and above with your own name/details._  
-_At the end of the project, complete the project reflection below by answering the questions (replace the ... parts)._
-_Note that to get high marks for this, your reflection should match the "exemplary" description from the rubric:_
+This Project's main objectives is to create a GUI program and use classes to make improvements to the Travel Tracker Program 1.0 whoses source code is from here 
+https://github.com/vishmango117/CP1404-A1
 
-> The project reflection is complete and describes development and learning well, shows careful thought, highlights insights made during code development.
+## Getting Started
+
+Instructions for getting started is to clone this repository 
+
+### Prerequisites
+
+The Prerequisites are the following
+1. Python latest version preferably 3.7.4 or higher
+2. Kivy and its dependencies. The instructions for installation of Kivy and its dependencies are available at the Documentation of Kivy at the kivy.org website
+
+Windows: https://kivy.org/doc/stable/installation/installation-windows.html
+
+Mac OS: https://kivy.org/doc/stable/installation/installation-osx.html
+
+Linux: https://kivy.org/doc/stable/installation/installation-linux.html
 
 
-## 1. How long did the entire project (assignment 2) take you?
-...  
-Note: You may like to use the WakaTime plugin, which tracks exactly how long you spend in code. See http://wakatime.com (but note that the free version only has a 7-day history)
 
-## 2. What are you most satisfied with?
-...
+```
 
-## 3. What are you least satisfied with?
-...
+### Installing
 
-## 4. What worked well in your development process?
-...
+A step by step series of examples that tell you how to get a development env running
 
-## 5. What about your process could be improved the next time you do a project like this?
-...
+Say what the step will be
 
-## 6. Describe what learning resources you used and how you used them.
-...
+```
+Give the example
+```
 
-## 7. Describe the main challenges or obstacles you faced and how you overcame them.
-... 
+And repeat
 
-## 8. Briefly describe your experience using classes and if/how they improved your code.
-...
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
