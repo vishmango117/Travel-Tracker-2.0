@@ -25,6 +25,7 @@ def main():
     """main(): The main function for the entire program
     which build run the GUI and builds the Place collection object"""
 
+    # SETTING OBJECTS OF PLACECOLLECTION AND TRAVELTRACKERAPP
     myplaceobj = PlaceCollection()
     myapp = TravelTrackerApp(myplaceobj)
     myapp.run()

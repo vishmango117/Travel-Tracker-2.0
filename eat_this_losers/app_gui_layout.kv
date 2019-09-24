@@ -1,17 +1,20 @@
 BoxLayout:
+    # outer layout
     orientation: 'horizontal'
     BoxLayout:
         orientation: 'vertical'
         size_hint_x: 0.4
         Label:
             text: 'Sort By:'
+        #Spinner for the sort selection
         Spinner:
             id: sort_selection
-            text: "<Select>"
+            text: "Visited"
             values: ["Visited", "Country", "City"]
             on_text: app.handle_sort_option(sort_selection.text)
         Label:
             text: 'Add New Place...'
+        # All the inputs for the label
         Label:
             text:'Name:'
         TextInput:
@@ -43,13 +46,16 @@ BoxLayout:
             on_press: app.clear_all_entries()
     BoxLayout:
         orientation: 'vertical'
+        # Shows the Unvisited Counter on the top
         Label:
             size_hint_y: 0.1
             id: unvisisted_display
             text: app.unvisited_display
+        #Contains all the place buttons
         BoxLayout:
             orientation: 'vertical'
             id: entries_box
+        # Shows the Program status bar at the bottom
         Label:
             size_hint_y: 0.1
             text: app.program_message
