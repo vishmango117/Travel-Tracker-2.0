@@ -1,16 +1,9 @@
 from PlaceCollection import PlaceCollection
-from app_layout import TravelTrackerApp
+from app_gui import TravelTrackerApp
 
-
-# Main function: Function to call the Kivy GUI app
-# and send the PlaceCollection Object
 def main():
-    try:
-        my_dict = PlaceCollection()
-        myapp = TravelTrackerApp(my_dict)
-        myapp.run()
-    except KeyboardInterrupt:
-        myapp.on_stop()
+    myapp = TravelTrackerApp(PlaceCollection())
+    myapp.run()
 
 if __name__ == "__main__":
     main()

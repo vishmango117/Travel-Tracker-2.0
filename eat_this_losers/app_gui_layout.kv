@@ -7,7 +7,7 @@ BoxLayout:
             text: 'Sort By:'
         Spinner:
             id: sort_selection
-            text: "Visited"
+            text: "<Select>"
             values: ["Visited", "Country", "City"]
             on_text: app.handle_sort_option(sort_selection.text)
         Label:
@@ -18,21 +18,18 @@ BoxLayout:
             text: ''
             id: place_input
             multiline: False
-            write_tab: False
         Label:
             text:'Country:'
         TextInput:
             text: ''
             id: country_input
             multiline: False
-            write_tab: False
         Label:
             text:'Priority:'
         TextInput:
             text: ''
             id: priority_input
             multiline: False
-            write_tab: False
         Button:
             id: submission
             text: 'Submit'
