@@ -100,7 +100,7 @@ class TravelTrackerApp(App):
             self.create_widgets(self.travel_tracker.collection[i])
 
     def handle_sort_option(self, option):
-
+        """handle_sort_option(): """
         #Set sorting based on the option set by the spinner in the kv
 
         # Option is Visited
@@ -180,6 +180,7 @@ class TravelTrackerApp(App):
     def clear_all_entries(self):
         """Clear_all_entries(): Method to clear entries on button press Clear
            name_input, country_input, priority_input and status bar."""
+        
         # Clear all inputs
         self.root.ids.place_input.text = ""
         self.root.ids.country_input.text = ""
