@@ -1,3 +1,8 @@
+"""CP1404 Programming-II Assignment-2 Travel Tracker 2.0
+PlaceCollection.py: file containing the class Placecollection
+which consists of collection(list), size(int), unvisited_counter(int)
+and methods like load_places(), add_place(), save_places(), get_unvisited()"""
+
 import csv
 from Places import Place
 from operator import attrgetter

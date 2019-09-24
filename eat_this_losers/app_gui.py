@@ -1,3 +1,11 @@
+"""CP1404 Programming-II Assignment-2 Travel Tracker 2.0
+app_gui.py: Main program for all the gui build
+and running the main functions of application window itself
+consists of unvisited_display and program_message as StringProperty()
+and methods like create_widgets, handle_visit, handle_sort_option(),
+handle_string_validation(), handle_submission(), handle_int_validation() and
+clear_all_entries()"""
+
 # Kivy Libraries
 from kivy.app import App
 from kivy.lang import Builder
@@ -8,16 +16,17 @@ from kivy.app import StringProperty
 from operator import attrgetter
 
 # Importing Classes
-from PlaceCollection import PlaceCollection
-from Places import Place
+# from PlaceCollection import PlaceCollection
+# from Places import Place
 
 
 class TravelTrackerApp(App):
-    """Main program - Kivy app to demo dynamic widget creation."""
+
+    # Variables to display program message or counter for unvisited places.
     unvisited_display = StringProperty()
     program_message = StringProperty()
 
-    
+
     def __init__(self, my_placecollection_obj):
         """__init__() : Method that loads the TravelTrackerApp on load
         calls the super classes __init__  function and sets the object."""
@@ -100,7 +109,9 @@ class TravelTrackerApp(App):
             self.create_widgets(self.travel_tracker.collection[i])
 
     def handle_sort_option(self, option):
-        """handle_sort_option(): """
+        """handle_sort_option(): Method to execute when the GUI app spinner menu is chosen
+        based on the selection the sort function is called based on a combination of
+        1. Visited and Priority 2. Country and Priority 3. City and Priority """
         #Set sorting based on the option set by the spinner in the kv
 
         # Option is Visited
