@@ -12,7 +12,7 @@ class Place:
         """__init__(): Method that loads the Places on load
         calls the super classes __init__  function and sets the object."""
 
-        #START OF FUNCTION
+        # START OF FUNCTION
         self.name = name
         self.country = country
         self.priority = priority
@@ -21,7 +21,7 @@ class Place:
     def __str__(self):
         """__str__(): Method that prints str on print object """
 
-        #START OF FUNCTION
+        # START OF FUNCTION
         if(self.visited == 'n'):
             return (
                 "{} in {}, priority {}".format(self.name,
@@ -45,3 +45,11 @@ class Place:
         """important_place(): function to return a boolean
         based on priority being less than equal to 2"""
         return self.priority <= 2
+
+# DEVELOPMENT AND TESTING PURPOSES
+# It allows individual testing of the files independently
+if __name__ == "__main__":
+    placeobj = Place("Lima", "Peru", 12)
+    print(placeobj)
+    placeobj.mark_visited()
+    print(placeobj)
