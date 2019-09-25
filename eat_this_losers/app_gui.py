@@ -16,7 +16,7 @@ from kivy.app import StringProperty
 from operator import attrgetter
 
 # Importing Classes
-# from PlaceCollection import PlaceCollection
+#
 from Places import Place
 
 
@@ -70,6 +70,8 @@ class TravelTrackerApp(App):
         """Create buttons from dictionary entries and add them to the GUI."""
 
         # START OF FUNCTION
+        # Creating Button object with background colors
+        # different for visited and unvisited
         if(placeobj.visited == "v"):
             temp_button = Button(text=placeobj.__str__(), id=placeobj.name,
                                  background_normal='',
