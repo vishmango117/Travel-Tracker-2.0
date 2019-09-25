@@ -82,12 +82,12 @@ class TravelTrackerApp(App):
                                  background_color=[0.027, 0.212, 0.259, 1])
 
         # Binding function to each button inside entries box
-        temp_button.bind(on_press=self.handle_visit)
+        temp_button.bind(on_press=self.handle_mark_visit)
 
         # add the button to the "entries_box" layout widget
         self.root.ids.entries_box.add_widget(temp_button)
 
-    def handle_visit(self, instance):
+    def handle_mark_visit(self, instance):
         """handle_visit(): Handles on what to do if button on the place is pressed
         in this case it will check whether update the dictionary
         is either to be visited or unvisited by which

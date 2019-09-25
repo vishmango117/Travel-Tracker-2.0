@@ -13,8 +13,7 @@ The 3 main Features of the programs are as follows
 The Program is spread into 7 main files and they are as follows
 main.py, app_gui.py, PlacesCollection.py, Places.py,
 places.csv(load/save the data from/to), app_gui_layout.kv
-and places_base.csv for basic data recovery
-                  """
+and places_base.csv for basic data recovery"""
 
 # importing System Libraries
 from PlaceCollection import PlaceCollection
