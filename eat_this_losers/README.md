@@ -1,5 +1,6 @@
-# CP1404 Assignment 2: Travel Tracker 2.0 by YOURNAME
-
+# CP1404 Assignment 2: Travel Tracker 2.0 by Vishal Manghnani 13759845
+## Links to the Github(Primary): https://github.com/vishmango117/jcus-cp1404-assg2-vishmango117
+## Links to the Github(Travel Tracker 1.0): https://github.com/vishmango117/CP1404-A1  
 _Edit this README, replacing this line and above with your own name/details._  
 _At the end of the project, complete the project reflection below by answering the questions (replace the ... parts)._
 _Note that to get high marks for this, your reflection should match the "exemplary" description from the rubric:_
@@ -9,7 +10,14 @@ _Note that to get high marks for this, your reflection should match the "exempla
 
 ## 1. How long did the entire project (assignment 2) take you?
 ...  
-Note: You may like to use the WakaTime plugin, which tracks exactly how long you spend in code. See http://wakatime.com (but note that the free version only has a 7-day history)
+The assignment roughly took about 25 Hours with 
+2 Hours set to building the classes
+6 Hours with testing and connecting the GUI to the main program 
+4 hours in building functions controlling the data structures and list
+3 hours in testing and checking the error validation
+4 hours on overall program testing and debugging the program
+2-3 hours on documentation and code refactoring.
+
 
 ## 2. What are you most satisfied with?
 ...
