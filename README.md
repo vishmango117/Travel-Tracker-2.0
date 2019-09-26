@@ -20,7 +20,6 @@ The assignment roughly took about 25 Hours with
 Compared to the previous Travel Tracker (1.0) classes help encase every place in a object rather than in list of dictionaries which helps in
 easier understanding on how to access or reference the data. Also going into GUI programs despite being diffcult to use is still exciting to learn and implement. 
 
-# NEED TO UPDATE
 ## 3. What are you least satisfied with?
 Kivy and their insufferable documentation which results in outdated help which results in struggling to find resources to help the debugging process related to errors and warning with kivy. In some other times Kivy's installation can pose issues to the point where the Mac OS installation is more straightforward than the windows installaltion and hence can result in lost time that could have been spent on developing and building the application.
 
